@@ -1,0 +1,27 @@
+
+query FetchAllJobs {
+  jobcareer {
+    id
+    jobName
+    jobStatus
+    jobDescription
+  }
+}
+
+query GetDetailJobs($id: Int!) {
+  jobcareer_by_pk(id: $id) {
+    jobDescription
+    jobName
+  }
+}
+
+
+mutation AddJobs($jobName: String!, $jobStatus: Boolean!) {
+  insert_jobcareer_one(object: {jobName: $jobName, jobStatus: $jobStatus}) {
+    id
+    jobName
+    jobStatus
+    jobDescription
+  }
+}
+
